@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    private float moveInput;
+    private float _moveInput;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
 
-    private bool facingRight = true;
+    private bool _facingRight = true;
 
 
     public bool isGrounded;
@@ -21,67 +21,48 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask whatIsGround;
 
-    private int extraJumps;
+    private int _extraJumps;
 
     public int extraJumpsValue;
 
     public bool isJumping;
 
-    private float JumpTimeCounter;
+    private float _jumpTimeCounter;
 
-    public float JumpTime;
-
+    public float jumpTime;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        extraJumps = extraJumpsValue;
+        _extraJumps = extraJumpsValue;
 
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    // void Update()
-    // {
-
-    //     if (isGrounded == true)
-    //     {
-    //         extraJumps = extraJumpsValue;
-    //     }z
-
-    //     if (Input.GetKeyDown(KeyCode.Space) && extraJumps >0)
-    //     {
-    //         rb.velocity = Vector2.up * jumpForce;
-    //         extraJumps--;
-    //     } else if (Input.GetKeyDown(KeyCode.Space) && extraJumps ==0 && isGrounded == true)
-    //     {
-    //         rb.velocity = Vector2.up * jumpForce;
-    //     }
-    // }
-
     void Update()
     {
 
         if (isGrounded == true)
         {
-            extraJumps = extraJumpsValue;
+            _extraJumps = extraJumpsValue;
         }
 
         // single jump
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space) && extraJumps == 0)
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space) && _extraJumps == 0)
         {
             isJumping = true;
-            JumpTimeCounter = JumpTime;
-            rb.velocity = Vector2.up * jumpForce;
+            _jumpTimeCounter = jumpTime;
+            _rb.velocity = Vector2.up * jumpForce;
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping == true)
         {
-            if (JumpTimeCounter > 0)
+            if (_jumpTimeCounter > 0)
             {
-                rb.velocity = Vector2.up * jumpForce;
-                JumpTimeCounter -= Time.deltaTime;
+                _rb.velocity = Vector2.up * jumpForce;
+                _jumpTimeCounter -= Time.deltaTime;
             } else {
                 isJumping = false;
             }
@@ -93,38 +74,39 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && extraJumps >0)
+        if (Input.GetKeyDown(KeyCode.Space) && _extraJumps >0)
         {
             isJumping = true;
-            JumpTimeCounter = JumpTime;
-            rb.velocity = Vector2.up * jumpForce / 3;
-            extraJumps--;
+            _jumpTimeCounter = jumpTime;
+            _rb.velocity = Vector2.up * jumpForce / 3;
+            _extraJumps--;
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        _moveInput = Input.GetAxis("Horizontal");
+        _rb.velocity = new Vector2(_moveInput * speed, _rb.velocity.y);
 
-        if (facingRight == false && moveInput > 0)
+        if (_facingRight == false && _moveInput > 0)
         {
             Flip();
-        } else if(facingRight == true && moveInput <0)
+        } else if(_facingRight == true && _moveInput <0)
         {
             Flip();
         }
 
     }
 
-    void Flip()
+    private void Flip()
     {
-        facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        _facingRight = !_facingRight;
+        var transform1 = transform;
+        Vector3 scaler = transform1.localScale;
+        scaler.x *= -1;
+        transform1.localScale = scaler;
     }
 }
