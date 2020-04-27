@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private float _jumpTimeCounter;
 
-    public float jumpTime;
+    public float JumpTime;
+
 
 
     // Start is called before the first frame update
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space) && _extraJumps == 0)
         {
             isJumping = true;
-            _jumpTimeCounter = jumpTime;
+            _jumpTimeCounter = JumpTime;
             _rb.velocity = Vector2.up * jumpForce;
         }
 
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
-        {
+        {    
             isJumping = false;
         }
 
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _extraJumps >0)
         {
             isJumping = true;
-            _jumpTimeCounter = jumpTime;
+            _jumpTimeCounter = JumpTime;
             _rb.velocity = Vector2.up * jumpForce / 3;
             _extraJumps--;
         }
@@ -104,9 +105,8 @@ public class PlayerController : MonoBehaviour
     private void Flip()
     {
         _facingRight = !_facingRight;
-        var transform1 = transform;
-        Vector3 scaler = transform1.localScale;
+        Vector3 scaler = transform.localScale;
         scaler.x *= -1;
-        transform1.localScale = scaler;
+        transform.localScale = scaler;
     }
 }

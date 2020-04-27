@@ -18,13 +18,11 @@ public class PlayerInit : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log("player was hit");
         transform.position = GameObject.FindWithTag("RespawnPoint").transform.position;
     }
 
     public void Exit()
     {
-        Debug.Log("Player reach the exit");
         transform.position = GameObject.FindWithTag("RespawnPoint").transform.position;
     }
 }

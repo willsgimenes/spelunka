@@ -14,8 +14,6 @@ public class Spike : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Player collided with the spike");
-
         if (other.CompareTag("Player"))
         {
             StartCoroutine(ExecuteAfterTimer(.1f, () =>
