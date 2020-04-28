@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    
+    // common variables
     public float speed;
-    public float jumpForce;
     private float _moveInput;
     private Rigidbody2D _rb;
     private bool _facingRight = true;
@@ -13,6 +14,10 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
+    
+    
+    // jump variables
+    public float jumpForce;
     private int _extraJumps;
     public int extraJumpsValue;
     public bool isJumping;
@@ -47,6 +52,13 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+    }
+    
+    // For debug purposes
+    private void OnGUI(){
+        GUI.Label(new Rect(10, 10, Screen.width, Screen.height),"Velocity: " + _rb.velocity);
+        GUI.Label(new Rect(10, 30, Screen.width, Screen.height),"Jumping: " + !isGrounded);
+        GUI.Label(new Rect(10, 50, Screen.width, Screen.height),"Coordinates: " + _rb.position);
     }
 
     private void Flip()
