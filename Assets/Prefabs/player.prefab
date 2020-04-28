@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 300948701968773553}
   - component: {fileID: 6446277292564879363}
   m_Layer: 0
-  m_Name: player new
+  m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6446277292564879363
 MonoBehaviour:
