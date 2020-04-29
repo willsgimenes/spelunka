@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: debug-block
+  m_Name: debug-sprite_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 8e116c40031f973478dcdc07955468ab, type: 3}
+  m_Sprite: {fileID: 8038547087937263726, guid: 5d16003cd2b43c349989d8b57bb5f27e,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

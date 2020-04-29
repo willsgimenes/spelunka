@@ -15,7 +15,7 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<PlayerController>().isGrounded)
+            if (other.GetComponent<CharacterController2D>().mGrounded)
             {
                 other.GetComponent<PlayerInit>().Exit();
             }
