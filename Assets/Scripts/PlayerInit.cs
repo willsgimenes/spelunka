@@ -1,23 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerInit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
+    private void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TakeDamage(int damage)
     {
-        
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 
     public void Hit()
     {
+        TakeDamage(10);
         transform.position = GameObject.FindWithTag("RespawnPoint").transform.position;
     }
 
