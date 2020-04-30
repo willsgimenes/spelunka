@@ -3,12 +3,12 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float mJumpForce = 10f;							// Amount of force added when the player jumps.
-	[SerializeField] private bool mAirControl;							// Whether or not a player can steer while jumping;
+	[SerializeField] private float mJumpForce = 10f;
+	[SerializeField] private bool mAirControl;
 	[SerializeField] private int extraJumps = 1;
 	[SerializeField] private float jumpTime = .3f;
-	[SerializeField] private LayerMask mWhatIsGround;							// A mask determining what is ground to the character
-	[SerializeField] private Transform mGroundCheck;							// A position marking where to check if the player is grounded.
+	[SerializeField] private LayerMask mWhatIsGround;
+	[SerializeField] private Transform mGroundCheck;
 	
 
 	private const float GroundedRadius = 1f;
