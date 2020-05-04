@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public string screen_name;
+    public LevelLoader _LevelLoader;
+    
     // Start is called before the first frame update
     void Start() { }
 
@@ -17,9 +20,14 @@ public class Door : MonoBehaviour
         {
             if (other.GetComponent<CharacterController2D>().mGrounded)
             {
-                other.GetComponent<PlayerInit>().Exit();
+                Exit(screen_name);
             }
         }
         
+    }
+    
+    private void Exit(string screen_name)
+    {
+        _LevelLoader.LoadNextLevel(screen_name);
     }
 }

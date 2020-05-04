@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInit : MonoBehaviour
 {
@@ -20,11 +21,6 @@ public class PlayerInit : MonoBehaviour
     {
         _healthSystem.TakeDmage(10);
         healthBar.SetHealth(_healthSystem.GetHealth());
-        transform.position = GameObject.FindWithTag("RespawnPoint").transform.position;
-    }
-
-    public void Exit()
-    {
         transform.position = GameObject.FindWithTag("RespawnPoint").transform.position;
     }
 
