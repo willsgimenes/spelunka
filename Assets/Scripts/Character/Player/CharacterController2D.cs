@@ -102,8 +102,8 @@ public class CharacterController2D : MonoBehaviour
 	}
 	
 	private void OnGUI(){
-		GUI.Label(new Rect(10, 10, Screen.width, Screen.height),"Velocity: " + _mRigidbody2D.velocity);
-		GUI.Label(new Rect(10, 30, Screen.width, Screen.height),"Jumping: " + !mGrounded);
-		GUI.Label(new Rect(10, 50, Screen.width, Screen.height),"Coordinates: " + _mRigidbody2D.position);
+		GUI.Label(new Rect(Screen.width - 200, 10, Screen.width, Screen.height),"Velocity: " + _mRigidbody2D.velocity);
+		GUI.Label(new Rect(Screen.width - 200, 30, Screen.width, Screen.height),"Jumping: " + !mGrounded);
+		GUI.Label(new Rect(Screen.width - 200, 50, Screen.width, Screen.height),"Coordinates: " + _mRigidbody2D.position);
 	}
 }
